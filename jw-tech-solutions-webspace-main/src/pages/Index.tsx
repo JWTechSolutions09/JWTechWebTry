@@ -33,7 +33,7 @@ const Index = () => {
     {
       name: "Carlos Rodríguez", 
       company: "StartupXYZ",
-      text: "NOOOOO no es amorrrr lo que tuuu sientessss seee llama obsecion unaaa ilucionnn en tu pensamiento.",
+      text: "Nos apoyaron en cada paso del camino, desde la idea inicial hasta el lanzamiento final.",
       rating: 5
     },
     {

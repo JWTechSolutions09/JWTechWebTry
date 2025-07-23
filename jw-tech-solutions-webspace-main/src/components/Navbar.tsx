@@ -23,7 +23,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-          <img src="/logo-jw.png" alt="JW Tech Solutions" className="h-10" />
+          <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-indigo-500 to-green-500">
+            JW Tech Solutions
+          </span>
         </Link>
 
 

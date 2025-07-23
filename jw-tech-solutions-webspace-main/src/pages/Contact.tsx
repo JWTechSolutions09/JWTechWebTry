@@ -36,7 +36,7 @@ const Contact = () => {
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,
       title: "Oficina",
-      value: "HERRERA LO MA CALENTON",
+      value: "Santo Domingo, RD",
       subtitle: "Citas disponibles"
     },
     {

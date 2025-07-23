@@ -25,12 +25,12 @@ const About = () => {
     {
       name: "Jamil Williams",
       role: "CEO & Fundador",
-      description: "10+ años en desarrollo de software y liderazgo tecnológico"
+      description: "Especialista en desarrollo Full-stack, metodologías ágiles y liderazgo tecnológico"
     },
     {
-      name: "LA ROSALIA",
-      role: "CTO",
-      description: "Experta en arquitectura de software y tecnologías emergentes"
+      name: "Carlos Miguel",
+      role: "Lead Developer",
+      description: "Experto en arquitectura de software y tecnologías emergentes"
     },
     {
       name: "JOSHUA WILLIAMS",
@@ -64,13 +64,15 @@ const About = () => {
                 Nuestra Historia
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Fundada en 2020, JW Tech Solutions nació de la visión de democratizar el acceso a tecnología de vanguardia. 
-                Comenzamos como un pequeño equipo de desarrolladores apasionados y hemos crecido hasta convertirnos en una 
-                empresa reconocida por nuestra innovación y calidad.
+                En JW Tech Solutions, nacimos con una visión clara: transformar digitalmente a las empresas para que alcancen su máximo potencial.
+                Fundada en 2025 por un grupo de apasionados por la tecnología, comenzamos como una idea audaz en una laptop y una conexión Wi-Fi estable.
+                Hoy, somos una firma en constante crecimiento que impulsa soluciones innovadoras en desarrollo web, automatización, infraestructura, redes y ciberseguridad.
+                Desde nuestros inicios, entendimos que el mundo empresarial necesita más que simples herramientas tecnológicas: necesita aliados estratégicos que piensen en el futuro.
+                Por eso, nos enfocamos en crear sistemas personalizados, escalables y seguros que evolucionan con las necesidades de nuestros clientes.
+                Con cada línea de código y cada solución implementada, hemos demostrado que la tecnología no es un lujo, sino una inversión inteligente. Nuestro compromiso es seguir empujando los límites, explorando nuevas tecnologías y acompañando a nuestros clientes en su crecimiento digital.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Hoy, servimos a clientes desde startups hasta grandes corporaciones, siempre manteniendo nuestro 
-                compromiso con la excelencia técnica y el servicio personalizado.
+                Hoy, JW Tech Solutions es sinónimo de innovación, confianza y evolución constante.
               </p>
             </div>
             <div className="bg-card-gradient p-8 rounded-2xl shadow-medium">
@@ -93,7 +95,7 @@ const About = () => {
               Los principios que guían cada decisión y proyecto en JW Tech Solutions
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <Card key={index} className="bg-card-gradient border-0 shadow-medium hover:shadow-strong transition-all duration-300 hover:-translate-y-2">
@@ -125,7 +127,7 @@ const About = () => {
               Profesionales experimentados comprometidos con tu éxito
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <Card key={index} className="bg-card-gradient border-0 shadow-medium hover:shadow-strong transition-all duration-300">
