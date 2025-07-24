@@ -66,14 +66,19 @@ const About = () => {
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                 En JW Tech Solutions, nacimos con una visión clara: transformar digitalmente a las empresas para que alcancen su máximo potencial.
                 Fundada en 2025 por un grupo de apasionados por la tecnología, comenzamos como una idea audaz en una laptop y una conexión Wi-Fi estable.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 Hoy, somos una firma en constante crecimiento que impulsa soluciones innovadoras en desarrollo web, automatización, infraestructura, redes y ciberseguridad.
                 Desde nuestros inicios, entendimos que el mundo empresarial necesita más que simples herramientas tecnológicas: necesita aliados estratégicos que piensen en el futuro.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 Por eso, nos enfocamos en crear sistemas personalizados, escalables y seguros que evolucionan con las necesidades de nuestros clientes.
                 Con cada línea de código y cada solución implementada, hemos demostrado que la tecnología no es un lujo, sino una inversión inteligente. Nuestro compromiso es seguir empujando los límites, explorando nuevas tecnologías y acompañando a nuestros clientes en su crecimiento digital.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Hoy, JW Tech Solutions es sinónimo de innovación, confianza y evolución constante.
               </p>
+              
             </div>
             <div className="bg-card-gradient p-8 rounded-2xl shadow-medium">
               <div className="flex items-center justify-center h-64 bg-primary/10 rounded-xl">
