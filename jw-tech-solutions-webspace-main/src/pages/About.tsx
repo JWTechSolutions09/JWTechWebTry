@@ -4,22 +4,22 @@ import Navbar from "@/components/Navbar";
 
 const About = () => {
   const values = [
-  {
-    icon: <Target className="h-8 w-8 text-primary" />,
-    title: "Misión",
-    description: "Impulsar la transformación digital de las empresas a través de soluciones tecnológicas innovadoras, eficientes y personalizadas que generen valor real."
-  },
-  {
-    icon: <Lightbulb className="h-8 w-8 text-accent" />,
-    title: "Visión",
-    description: "Ser líderes en desarrollo tecnológico y convertirnos en la empresa de soluciones innovadoras más reconocida a nivel mundial, construyendo el futuro digital de nuestros clientes con excelencia y creatividad."
-  },
-  {
-    icon: <Award className="h-8 w-8 text-primary" />,
-    title: "Valores",
-    description: "Trabajamos con excelencia, innovación, compromiso, integridad y enfoque humano en cada proyecto que emprendemos."
-  }
-];
+    {
+      icon: <Target className="h-8 w-8 text-primary" />,
+      title: "Misión",
+      description: "Impulsar la transformación digital de las empresas a través de soluciones tecnológicas innovadoras, eficientes y personalizadas que generen valor real."
+    },
+    {
+      icon: <Lightbulb className="h-8 w-8 text-accent" />,
+      title: "Visión",
+      description: "Ser líderes en desarrollo tecnológico y convertirnos en la empresa de soluciones innovadoras más reconocida a nivel mundial, construyendo el futuro digital de nuestros clientes con excelencia y creatividad."
+    },
+    {
+      icon: <Award className="h-8 w-8 text-primary" />,
+      title: "Valores",
+      description: "Trabajamos con excelencia, innovación, compromiso, integridad y enfoque humano en cada proyecto que emprendemos."
+    }
+  ];
 
   const team = [
     {
@@ -27,24 +27,24 @@ const About = () => {
       role: "CEO & Fundador",
       description: "Especialista en desarrollo Full-stack, metodologías ágiles y liderazgo tecnológico."
     },
-    
+
     {
       name: "JOSHUA WILLIAMS",
       role: "Lead Developer",
       description: "Especialista en desarrollo full-stack y metodologías ágiles."
-      
+
     },
-     {
+    {
       name: "Genesis Diaz",
       role: "Lead Designer",
       description: "Lidera la creación de identidades visuales sólidas y coherentes que reflejan el valor de cada marca."
     },
     {
-        name: "Carlos Miguel",
-        role: "Lead Developer",
-        description: "Experto en arquitectura de software y tecnologías emergentes."
-      }
-    ];
+      name: "Carlos Miguel",
+      role: "Lead Developer",
+      description: "Experto en arquitectura de software y tecnologías emergentes."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -57,7 +57,7 @@ const About = () => {
             Conoce a JW Tech Solutions:
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-           💡Tecnología con propósito, innovación con impacto: eso es JW Tech Solutions.🚀
+            💡Tecnología con propósito, innovación con impacto: eso es JW Tech Solutions.🚀
           </p>
         </div>
       </section>
@@ -91,7 +91,7 @@ const About = () => {
             <div className="bg-card-gradient p-8 rounded-2xl shadow-medium">
               <div className="flex items-center justify-center h-64 bg-primary/10 rounded-xl overflow-hidden">
                 <img
-                  src="/public/LogoJWPan.jpeg"
+                  src="/LogoJWPan.jpeg"
                   alt="JW Tech Solutions"
                   className="w-full max-w-[520px] h-full max-h-[270px]"
                 />
@@ -140,7 +140,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-             👥 Nuestro Equipo:
+              👥 Nuestro Equipo:
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Personas apasionadas, experiencia comprobada y un compromiso real con tu crecimiento.
