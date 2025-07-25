@@ -4,40 +4,47 @@ import Navbar from "@/components/Navbar";
 
 const About = () => {
   const values = [
-    {
-      icon: <Target className="h-8 w-8 text-primary" />,
-      title: "Misión",
-      description: "Impulsar la transformación digital de las empresas mediante soluciones tecnológicas innovadoras y personalizadas."
-    },
-    {
-      icon: <Lightbulb className="h-8 w-8 text-accent" />,
-      title: "Visión",
-      description: "Ser líderes en desarrollo tecnológico, creando el futuro digital de nuestros clientes con excelencia e innovación."
-    },
-    {
-      icon: <Award className="h-8 w-8 text-primary" />,
-      title: "Valores",
-      description: "Excelencia, innovación, compromiso y transparencia en cada proyecto que desarrollamos."
-    }
-  ];
+  {
+    icon: <Target className="h-8 w-8 text-primary" />,
+    title: "Misión",
+    description: "Impulsar la transformación digital de las empresas a través de soluciones tecnológicas innovadoras, eficientes y personalizadas que generen valor real."
+  },
+  {
+    icon: <Lightbulb className="h-8 w-8 text-accent" />,
+    title: "Visión",
+    description: "Ser líderes en desarrollo tecnológico y convertirnos en la empresa de soluciones innovadoras más reconocida a nivel mundial, construyendo el futuro digital de nuestros clientes con excelencia y creatividad."
+  },
+  {
+    icon: <Award className="h-8 w-8 text-primary" />,
+    title: "Valores",
+    description: "Trabajamos con excelencia, innovación, compromiso, integridad y enfoque humano en cada proyecto que emprendemos."
+  }
+];
 
   const team = [
     {
       name: "Jamil Williams",
       role: "CEO & Fundador",
-      description: "Especialista en desarrollo Full-stack, metodologías ágiles y liderazgo tecnológico"
+      description: "Especialista en desarrollo Full-stack, metodologías ágiles y liderazgo tecnológico."
     },
-    {
-      name: "Carlos Miguel",
-      role: "Lead Developer",
-      description: "Experto en arquitectura de software y tecnologías emergentes"
-    },
+    
     {
       name: "JOSHUA WILLIAMS",
       role: "Lead Developer",
-      description: "Especialista en desarrollo full-stack y metodologías ágiles"
-    }
-  ];
+      description: "Especialista en desarrollo full-stack y metodologías ágiles."
+      
+    },
+     {
+      name: "Genesis Diaz",
+      role: "Lead Designer",
+      description: "Lidera la creación de identidades visuales sólidas y coherentes que reflejan el valor de cada marca."
+    },
+    {
+        name: "Carlos Miguel",
+        role: "Lead Developer",
+        description: "Experto en arquitectura de software y tecnologías emergentes."
+      }
+    ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -47,10 +54,10 @@ const About = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Conoce a JW Tech Solutions
+            Conoce a JW Tech Solutions:
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            Somos un equipo apasionado por la tecnología, dedicado a crear soluciones digitales que transforman negocios
+           💡Tecnología con propósito, innovación con impacto: eso es JW Tech Solutions.🚀
           </p>
         </div>
       </section>
@@ -61,7 +68,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Nuestra Historia
+                📖 Nuestra Historia:
               </h2>
 
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
@@ -69,7 +76,7 @@ const About = () => {
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Hoy, somos una firma en constante crecimiento que impulsa soluciones innovadoras en desarrollo web, automatización, infraestructura, redes y ciberseguridad. Desde nuestros inicios, entendimos que el mundo empresarial necesita más que simples herramientas tecnológicas: necesita aliados estratégicos que piensen en el futuro.
+                Hoy, somos una empresa en constante crecimiento que impulsa soluciones innovadoras en desarrollo web, automatización, infraestructura, redes y ciberseguridad. Desde nuestros inicios, entendimos que el mundo empresarial necesita más que simples herramientas tecnológicas: necesita aliados estratégicos que piensen en el futuro.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
@@ -82,9 +89,14 @@ const About = () => {
             </div>
 
             <div className="bg-card-gradient p-8 rounded-2xl shadow-medium">
-              <div className="flex items-center justify-center h-64 bg-primary/10 rounded-xl">
-                <Users className="h-32 w-32 text-primary" />
+              <div className="flex items-center justify-center h-64 bg-primary/10 rounded-xl overflow-hidden">
+                <img
+                  src="/public/LogoJWPan.jpeg"
+                  alt="JW Tech Solutions"
+                  className="w-full max-w-[520px] h-full max-h-[270px]"
+                />
               </div>
+
             </div>
           </div>
         </div>
@@ -96,10 +108,10 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Nuestros Valores
+              Nuestros Valores:
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Los principios que guían cada decisión y proyecto en JW Tech Solutions
+              Lo que creemos, guía lo que creamos..📌
             </p>
           </div>
 
@@ -128,10 +140,10 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Nuestro Equipo
+             👥 Nuestro Equipo:
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Profesionales experimentados comprometidos con tu éxito
+              Personas apasionadas, experiencia comprobada y un compromiso real con tu crecimiento.
             </p>
           </div>
 

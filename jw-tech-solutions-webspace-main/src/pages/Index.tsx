@@ -1,4 +1,15 @@
-import { ArrowRight, Code, Smartphone, Globe, Users, Star, CheckCircle } from "lucide-react";
+import { ArrowRight, Code, Smartphone, Globe, Users, Star, CheckCircle,   
+  Cloud,
+  Server,
+  ShieldCheck,
+  Wrench,
+  AlertTriangle,
+  Satellite,
+  Repeat,
+  Paintbrush,
+  Megaphone
+  
+ } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,20 +18,73 @@ import Navbar from "@/components/Navbar";
 const Index = () => {
   const features = [
     {
-      icon: <Globe className="h-12 w-12 text-primary" />,
-      title: "Desarrollo Web",
-      description: "Sitios web modernos y responsivos que impulsan tu presencia digital"
-    },
-    {
-      icon: <Smartphone className="h-12 w-12 text-accent" />,
-      title: "Apps Móviles",
-      description: "Aplicaciones nativas que conectan con tus usuarios donde estén"
-    },
-    {
-      icon: <Code className="h-12 w-12 text-primary" />,
-      title: "Software Personalizado",
-      description: "Soluciones a medida que automatizan y optimizan tus procesos"
-    }
+    icon: <Globe className="h-12 w-12 text-primary" />,
+    title: "Desarrollo Web",
+    description: "Creamos sitios web modernos, rápidos y adaptables que elevan tu presencia digital y mejoran la experiencia del usuario."
+  },
+  {
+    icon: <Smartphone className="h-12 w-12 text-accent" />,
+    title: "Apps Móviles",
+    description: "Desarrollamos aplicaciones móviles nativas que conectan con tus usuarios desde cualquier lugar, en cualquier dispositivo."
+  },
+  {
+    icon: <Code className="h-12 w-12 text-primary" />,
+    title: "Software Personalizado",
+    description: "Diseñamos soluciones a medida que se adaptan a tus procesos y necesidades específicas, mejorando la productividad de tu empresa."
+  },
+  {
+    icon: <Cloud className="h-12 w-12 text-primary" />,
+    title: "Servicios en la Nube",
+    description: "Implementamos y gestionamos soluciones en la nube seguras y escalables para facilitar el acceso y la colaboración desde cualquier parte del mundo."
+  },
+  {
+    icon: <Server className="h-12 w-12 text-accent" />,
+    title: "Infraestructura IT",
+    description: "Optimizamos y gestionamos redes, servidores y sistemas críticos para garantizar la continuidad y el rendimiento de tu negocio."
+  },
+  {
+    icon: <ShieldCheck className="h-12 w-12 text-primary" />,
+    title: "Ciberseguridad",
+    description: "Protegemos tu información y sistemas con soluciones avanzadas de seguridad digital y monitoreo continuo contra amenazas."
+  },
+  {
+    icon: <Paintbrush className="h-12 w-12 text-primary" />,
+    title: "Diseño Gráfico",
+    description: "Creamos identidades visuales impactantes y materiales gráficos profesionales que comunican efectivamente el valor de tu marca."
+  },
+  
+  {
+    icon: <Wrench className="h-12 w-12 text-primary" />,
+    title: "CMMS Implementation & Migration",
+    description: "Instalamos, migramos y optimizamos sistemas CMMS para una gestión eficiente del mantenimiento y activos empresariales."
+  },
+  {
+    icon: <AlertTriangle className="h-12 w-12 text-accent" />,
+    title: "ECMS Installation & Warning Setup",
+    description: "Configuramos sistemas ECMS con alertas inteligentes para monitorear procesos críticos y garantizar operaciones eficientes."
+  },
+  {
+    icon: <Satellite className="h-12 w-12 text-primary" />,
+    title: "IoT Device Integration & Tracking",
+    description: "Conectamos e integramos dispositivos IoT para el monitoreo y control en tiempo real de tus procesos o activos."
+  },
+  {
+    icon: <Repeat className="h-12 w-12 text-accent" />,
+    title: "Automation & Process Optimization",
+    description: "Automatizamos tareas repetitivas y optimizamos flujos de trabajo para reducir errores, ahorrar tiempo y aumentar la eficiencia."
+  },
+  {
+    icon: <Users className="h-12 w-12 text-accent" />,
+    title: "Manejo de Redes Sociales",
+    description: "Gestionamos estratégicamente tus redes sociales para aumentar tu visibilidad, generar engagement y potenciar tu marca en línea."
+  },
+  {
+  icon: <Megaphone className="h-12 w-12 text-primary" />,
+  title: "Marketing Digital y Publicidad",
+  description: "Diseñamos campañas digitales efectivas para posicionar tu marca, atraer nuevos clientes y aumentar tus conversiones en línea."
+}
+
+
   ];
 
   const testimonials = [
@@ -45,10 +109,10 @@ const Index = () => {
   ];
 
   const stats = [
-    { number: "50+", label: "Proyectos Completados" },
+    { number: "10+", label: "Proyectos Completados" },
     { number: "98%", label: "Satisfacción Cliente" },
     { number: "24/7", label: "Soporte Técnico" },
-    { number: "4+", label: "Años Experiencia" }
+    { number: "10+", label: "Tecnicos Profesionales Disponibles" }
   ];
 
   return (
@@ -67,7 +131,7 @@ const Index = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
-              Transformamos ideas en soluciones tecnológicas que impulsan el crecimiento de tu negocio
+            💡Llevamos tu visión al siguiente nivel con tecnología que transforma.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contacto">
@@ -91,10 +155,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Servicios Que Transforman
+              Nuestros Servicios:
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ofrecemos soluciones tecnológicas completas para llevar tu empresa al siguiente nivel
+              Tecnología que transforma. Soluciones que impulsan. Resultados que escalan.🚀
             </p>
           </div>
           
@@ -179,7 +243,7 @@ const Index = () => {
               ¿Listo Para Comenzar Tu Proyecto?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Contáctanos hoy y descubre cómo podemos transformar tu idea en una solución digital exitosa
+              Contáctanos hoy y descubre cómo podemos transformar tu idea en una solución digital exitosa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contacto">

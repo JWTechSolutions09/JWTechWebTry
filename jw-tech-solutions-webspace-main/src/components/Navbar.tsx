@@ -18,15 +18,17 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="bg-background/95 backdrop-blur-sm border-b sticky top-0 z-50 shadow-soft">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-indigo-500 to-green-500">
-            JW Tech Solutions
-          </span>
-        </Link>
+  <nav className="bg-background/95 backdrop-blur-sm border-b sticky top-0 z-50 shadow-soft">
+  <div className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8">
+    <div className="flex justify-between items-center h-20"> {}
+      {/* Logo */}
+      <Link to="/" className="flex items-center space-x-2">
+        <img
+          src="/logo-jw.png"
+          alt="JW Tech Solutions Logo"
+          className="h-16" 
+        />
+      </Link>
 
 
           {/* Desktop Navigation */}

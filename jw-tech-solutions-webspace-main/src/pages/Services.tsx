@@ -19,67 +19,69 @@ const Services = () => {
       title: "Desarrollo Web",
       description: "Sitios web modernos, rápidos y responsivos usando las últimas tecnologías",
       features: ["React/Next.js", "E-commerce", "CMS", "SEO Optimizado"],
-      price: "Desde $1,500"
-    },
+      price: "Cotización personalizada",
+     },
     {
       icon: <Smartphone className="h-12 w-12 text-accent" />,
       title: "Apps Móviles",
       description: "Aplicaciones nativas e híbridas para iOS y Android",
       features: ["React Native", "Flutter", "Publicación en stores", "Push notifications"],
-      price: "Desde $3,000"
+      price: "Cotización personalizada",
+    
     },
     {
       icon: <Code className="h-12 w-12 text-primary" />,
       title: "Software Personalizado",
       description: "Sistemas a medida para automatizar y optimizar procesos empresariales",
       features: ["ERP/CRM", "APIs REST", "Integraciones", "Escalabilidad"],
-      price: "Desde $5,000"
-    },
+      price: "Cotización personalizada",
+          },
     {
       icon: <Database className="h-12 w-12 text-accent" />,
       title: "Base de Datos",
       description: "Diseño, optimización y migración de bases de datos robustas",
       features: ["MySQL/PostgreSQL", "MongoDB", "Cloud databases", "Backup automático"],
-      price: "Desde $800"
-    },
+      price: "Cotización personalizada",
+
+        },
     {
       icon: <Shield className="h-12 w-12 text-primary" />,
       title: "Ciberseguridad",
       description: "Protección integral para tu infraestructura digital",
       features: ["Auditorías", "SSL/TLS", "Firewalls", "Pentesting"],
-      price: "Desde $1,200"
+      price: "Cotización personalizada",
     },
     {
       icon: <Palette className="h-12 w-12 text-accent" />,
       title: "UI/UX Design",
       description: "Diseños intuitivos y atractivos centrados en el usuario",
       features: ["Wireframes", "Prototipos", "Design systems", "User testing"],
-      price: "Desde $900"
+      price: "Cotización personalizada",
     }
   ];
 
-  const process = [
-    {
-      step: "01",
-      title: "Análisis",
-      description: "Entendemos tus necesidades y objetivos de negocio"
-    },
-    {
-      step: "02", 
-      title: "Propuesta",
-      description: "Diseñamos una solución personalizada con presupuesto detallado"
-    },
-    {
-      step: "03",
-      title: "Desarrollo",
-      description: "Implementamos la solución con metodologías ágiles"
-    },
-    {
-      step: "04",
-      title: "Entrega",
-      description: "Desplegamos y capacitamos para el uso óptimo"
-    }
-  ];
+ const process = [
+  {
+    step: "01",
+    title: "Análisis",
+    description: "Evaluamos tus necesidades, metas y entorno tecnológico para definir el enfoque ideal."
+  },
+  {
+    step: "02", 
+    title: "Propuesta",
+    description: "Diseñamos una solución a medida con alcance, tiempos y presupuesto claramente definidos."
+  },
+  {
+    step: "03",
+    title: "Desarrollo",
+    description: "Creamos e iteramos la solución usando metodologías ágiles, garantizando calidad y eficiencia."
+  },
+  {
+    step: "04",
+    title: "Entrega",
+    description: "Desplegamos la solución, capacitamos a tu equipo y brindamos soporte para una adopción exitosa."
+  }
+];
 
   return (
     <div className="min-h-screen bg-background">
@@ -89,10 +91,10 @@ const Services = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Nuestros Servicios
+            💻Nuestros Servicios:
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            Soluciones tecnológicas completas para impulsar tu negocio al siguiente nivel
+            Tecnología, estrategia y creatividad unidas para acelerar el crecimiento de tu empresa.📌
           </p>
         </div>
       </section>
@@ -142,10 +144,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Nuestro Proceso
+              ⏳Nuestro Proceso:
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Metodología probada para entregar resultados excepcionales
+              Metodología probada para entregar resultados excepcionales.
             </p>
           </div>
           

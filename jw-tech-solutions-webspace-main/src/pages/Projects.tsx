@@ -114,10 +114,10 @@ const Projects = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Nuestros Proyectos
+            🛠️Nuestros Proyectos:
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            Descubre los proyectos exitosos que hemos desarrollado para nuestros clientes
+            Descubre los proyectos exitosos que hemos desarrollado para nuestros clientes:
           </p>
         </div>
       </section>
@@ -235,7 +235,7 @@ const Projects = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
+              <div className="text-4xl font-bold text-primary mb-2">10+</div>
               <div className="text-muted-foreground">Proyectos Completados</div>
             </div>
             <div>
@@ -247,8 +247,9 @@ const Projects = () => {
               <div className="text-muted-foreground">Soporte Técnico</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-accent mb-2">4+</div>
-              <div className="text-muted-foreground">Años Experiencia</div>
+              <div className="text-4xl font-bold text-accent mb-2">10+</div>
+              <div className="text-muted-foreground">Tecnicos Profesionales Disponibles
+</div>
             </div>
           </div>
         </div>
