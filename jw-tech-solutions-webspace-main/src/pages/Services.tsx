@@ -1,16 +1,18 @@
-import { 
-  Code, 
-  Smartphone, 
-  Globe, 
-  Database, 
-  Shield, 
+import {
+  Code,
+  Smartphone,
+  Globe,
+  Database,
+  Shield,
   Palette,
   ArrowRight,
   CheckCircle
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+
 
 const Services = () => {
   const services = [
@@ -20,14 +22,14 @@ const Services = () => {
       description: "Sitios web modernos, rápidos y responsivos usando las últimas tecnologías",
       features: ["React/Next.js", "E-commerce", "CMS", "SEO Optimizado"],
       price: "Cotización personalizada",
-     },
+    },
     {
       icon: <Smartphone className="h-12 w-12 text-accent" />,
       title: "Apps Móviles",
       description: "Aplicaciones nativas e híbridas para iOS y Android",
       features: ["React Native", "Flutter", "Publicación en stores", "Push notifications"],
       price: "Cotización personalizada",
-    
+
     },
     {
       icon: <Code className="h-12 w-12 text-primary" />,
@@ -35,7 +37,7 @@ const Services = () => {
       description: "Sistemas a medida para automatizar y optimizar procesos empresariales",
       features: ["ERP/CRM", "APIs REST", "Integraciones", "Escalabilidad"],
       price: "Cotización personalizada",
-          },
+    },
     {
       icon: <Database className="h-12 w-12 text-accent" />,
       title: "Base de Datos",
@@ -43,7 +45,7 @@ const Services = () => {
       features: ["MySQL/PostgreSQL", "MongoDB", "Cloud databases", "Backup automático"],
       price: "Cotización personalizada",
 
-        },
+    },
     {
       icon: <Shield className="h-12 w-12 text-primary" />,
       title: "Ciberseguridad",
@@ -60,28 +62,28 @@ const Services = () => {
     }
   ];
 
- const process = [
-  {
-    step: "01",
-    title: "Análisis",
-    description: "Evaluamos tus necesidades, metas y entorno tecnológico para definir el enfoque ideal."
-  },
-  {
-    step: "02", 
-    title: "Propuesta",
-    description: "Diseñamos una solución a medida con alcance, tiempos y presupuesto claramente definidos."
-  },
-  {
-    step: "03",
-    title: "Desarrollo",
-    description: "Creamos e iteramos la solución usando metodologías ágiles, garantizando calidad y eficiencia."
-  },
-  {
-    step: "04",
-    title: "Entrega",
-    description: "Desplegamos la solución, capacitamos a tu equipo y brindamos soporte para una adopción exitosa."
-  }
-];
+  const process = [
+    {
+      step: "01",
+      title: "Análisis",
+      description: "Evaluamos tus necesidades, metas y entorno tecnológico para definir el enfoque ideal."
+    },
+    {
+      step: "02",
+      title: "Propuesta",
+      description: "Diseñamos una solución a medida con alcance, tiempos y presupuesto claramente definidos."
+    },
+    {
+      step: "03",
+      title: "Desarrollo",
+      description: "Creamos e iteramos la solución usando metodologías ágiles, garantizando calidad y eficiencia."
+    },
+    {
+      step: "04",
+      title: "Entrega",
+      description: "Desplegamos la solución, capacitamos a tu equipo y brindamos soporte para una adopción exitosa."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -127,10 +129,12 @@ const Services = () => {
                   </ul>
                   <div className="border-t pt-4">
                     <p className="text-lg font-bold text-primary mb-3">{service.price}</p>
-                    <Button className="w-full bg-tech-gradient hover:opacity-90 transition-opacity group">
-                      Solicitar Cotización
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <Link to={`/contacto?servicio=${encodeURIComponent(service.title)}`} className="w-full">
+                      <Button className="w-full bg-tech-gradient hover:opacity-90 transition-opacity group">
+                        Solicitar Cotización
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -150,7 +154,7 @@ const Services = () => {
               Metodología probada para entregar resultados excepcionales.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {process.map((item, index) => (
               <div key={index} className="text-center group">
@@ -186,10 +190,12 @@ const Services = () => {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Contáctanos hoy y descubre cómo nuestras soluciones tecnológicas pueden llevar tu empresa al siguiente nivel
             </p>
-            <Button size="lg" className="bg-tech-gradient hover:opacity-90 transition-opacity text-lg px-8 py-3">
-              Iniciar Proyecto
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link to="/contacto">
+              <Button size="lg" className="bg-tech-gradient hover:opacity-90 transition-opacity text-lg px-8 py-3">
+                Iniciar Proyecto
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

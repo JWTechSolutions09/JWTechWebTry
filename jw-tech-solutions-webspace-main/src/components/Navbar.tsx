@@ -48,9 +48,11 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
+            <Link to="/contacto">
             <Button className="bg-tech-gradient hover:opacity-90 transition-opacity shadow-medium">
               Cotizar Proyecto
             </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}

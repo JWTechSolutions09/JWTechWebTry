@@ -7,8 +7,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
+import emailjs from '@emailjs/browser';
+
+
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,8 +25,17 @@ const Contact = () => {
     service: "",
     message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+
+  useEffect(() => {
+    const servicioDesdeURL = searchParams.get("servicio");
+    if (servicioDesdeURL) {
+      setFormData(prev => ({
+        ...prev,
+        service: servicioDesdeURL,
+        message: `Hola, estoy interesado en el servicio de ${servicioDesdeURL}. Me gustaría recibir más información.`
+      }));
+    }
+  }, [searchParams]);
 
   const contactInfo = [
     {
@@ -49,7 +66,7 @@ const Contact = () => {
 
   const services = [
     "Desarrollo Web",
-    "Aplicaciones Móviles", 
+    "Aplicaciones Móviles",
     "Software Personalizado",
     "Consultoría Técnica",
     "E-commerce",
@@ -68,26 +85,47 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      service: formData.service,
+      message: formData.message
+    };
 
-    toast({
-      title: "¡Mensaje enviado exitosamente!",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
+    try {
+      await emailjs.send(
+        "service_fd9i4il",      // Service ID 
+        "template_60v84au",     // Template ID 
+        templateParams,
+        "MBKs0bSMC6hGCJ4Xi"       // Clave pública
+      );
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      service: "",
-      message: ""
-    });
+      toast({
+        title: "¡Mensaje enviado exitosamente!",
+        description: "Nos pondremos en contacto contigo pronto.",
+      });
 
-    setIsSubmitting(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "",
+        message: ""
+      });
+
+    } catch (error) {
+      toast({
+        title: "Ocurrió un error",
+        description: "Intenta de nuevo más tarde o usa otro medio de contacto.",
+      });
+      console.error("EmailJS error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -99,7 +137,7 @@ const Contact = () => {
             📲Contáctanos:
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-             ¿Tienes un proyecto en mente? 💡 Hablemos y hagámoslo realidad con soluciones tecnológicas a tu medida.
+            ¿Tienes un proyecto en mente? 💡 Hablemos y hagámoslo realidad con soluciones tecnológicas a tu medida.
           </p>
         </div>
       </section>
@@ -144,7 +182,7 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Nombre completo *</Label>
+                      <Label htmlFor="name">Nombre completo: *</Label>
                       <Input
                         id="name"
                         name="name"
@@ -155,7 +193,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email">Email: *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -170,47 +208,61 @@ const Contact = () => {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Teléfono</Label>
+                      <Label htmlFor="phone">Teléfono:</Label>
                       <Input
                         id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="+1 (809) 761-2875"
+                        placeholder="+1 (849)-381-9937"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="company">Empresa</Label>
+                      <Label htmlFor="company">Empresa:</Label>
                       <Input
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleInputChange}
-                        placeholder="Nombre de tu empresa"
+                        placeholder="Empresa/Grupo/Personal:"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="service">Servicio de interés</Label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                    >
-                      <option value="">Selecciona un servicio</option>
-                      {services.map((service, index) => (
-                        <option key={index} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
+
+                    {searchParams.get("servicio") ? (
+                      // Si vino desde una tarjeta (URL)
+                      <Input
+                        id="service"
+                        name="service"
+                        value={formData.service}
+                        readOnly
+                        className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring cursor-not-allowed"
+                      />
+                    ) : (
+                      // Nota :Si no vino desde una tarjeta, muestra el select normal
+                      <select
+                        id="service"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                        required
+                      >
+                        <option value="">Selecciona un servicio</option>
+                        {services.map((service, index) => (
+                          <option key={index} value={service}>
+                            {service}
+                          </option>
+                        ))}
+                      </select>
+                    )}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Mensaje *</Label>
+                    <Label htmlFor="message">Mensaje: *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -218,12 +270,12 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
-                      placeholder="Cuéntanos sobre tu proyecto..."
+                      placeholder="Cuéntanos sobre tu proyecto... Incluye detalles como objetivos y cualquier información relevante."
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="w-full bg-tech-gradient hover:opacity-90 transition-opacity"
                     disabled={isSubmitting}
                   >
@@ -240,20 +292,23 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-           {/* Map & Additional Info */}
-        <div className="space-y-8">
-          {/* Mapa de ubicación */}
-          <Card className="bg-card-gradient border-0 shadow-medium">
-            <CardContent className="p-0">
-              <iframe
-                className="w-full h-64 rounded-lg"
-                src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d121106.34768470144!2d-70.06583933590461!3d18.457670204894583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x8ea56178c719da17%3A0xcb4de30651a6d873!2sAv.%2027%20de%20Febrero!3m2!1d18.457687999999997!2d-69.9834376!5e0!3m2!1ses-419!2sdo!4v1753411805646!5m2!1ses-419!2sdo"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </CardContent>
-          </Card>
+            {/* Map & Additional Info */}
+            <div className="space-y-8">
+              {/* Mapa de ubicación */}
+              <Card className="bg-card-gradient border-0 shadow-medium">
+                <CardContent className="p-0">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.572875069226!2d-69.98568795247235!3d18.457692433788925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ea56178c719da17%3A0xcb4de30651a6d873!2sPlaza%20Paseo%2027!5e0!3m2!1ses-419!2sdo!4v1753515472942!5m2!1ses-419!2sdo"
+                    width="100%"
+                    height="450"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full rounded-lg"
+                  ></iframe>
+                </CardContent>
+              </Card>
 
               {/* Why Choose Us */}
               <Card className="bg-card-gradient border-0 shadow-medium">
@@ -293,10 +348,18 @@ const Contact = () => {
           <p className="text-lg text-muted-foreground mb-8">
             Agenda una consulta gratuita de 30 minutos para discutir tu proyecto.
           </p>
-          <Button size="lg" className="bg-tech-gradient hover:opacity-90 transition-opacity">
-            <Phone className="mr-2 h-5 w-5" />
-            Agendar Llamada
-          </Button>
+
+          {/* Calendly button */}
+          <a
+            href="https://calendly.com/jwtechdr/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button size="lg" className="bg-tech-gradient hover:opacity-90 transition-opacity">
+              <Phone className="mr-2 h-5 w-5" />
+              Agendar Llamada
+            </Button>
+          </a>
         </div>
       </section>
     </div>
