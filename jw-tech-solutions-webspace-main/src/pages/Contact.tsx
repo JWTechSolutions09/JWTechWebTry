@@ -137,7 +137,7 @@ const Contact = () => {
             📲Contáctanos:
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            ¿Tienes un proyecto en mente? 💡 Hablemos y hagámoslo realidad con soluciones tecnológicas a tu medida.
+            ¿Tienes un proyecto en mente?  Hablemos y hagámoslo realidad con soluciones tecnológicas a tu medida.
           </p>
         </div>
       </section>
