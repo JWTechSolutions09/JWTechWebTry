@@ -1,295 +1,236 @@
-import { ArrowRight, Code, Smartphone, Globe, Users, Star, CheckCircle,   
-  Cloud,
-  Server,
-  ShieldCheck,
-  Wrench,
-  AlertTriangle,
-  Satellite,
-  Repeat,
-  Paintbrush,
-  Megaphone
-  
- } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useMemo, useState } from "react";
+import { siteContent } from "@/config/siteContent";
+import Reveal from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
+import { Code, Zap,ArrowRight, Check, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
-const Index = () => {
-  const features = [
-    {
-    icon: <Globe className="h-12 w-12 text-primary" />,
-    title: "Desarrollo Web",
-    description: "Creamos sitios web modernos, rápidos y adaptables que elevan tu presencia digital y mejoran la experiencia del usuario."
-  },
-  {
-    icon: <Smartphone className="h-12 w-12 text-accent" />,
-    title: "Apps Móviles",
-    description: "Desarrollamos aplicaciones móviles nativas que conectan con tus usuarios desde cualquier lugar, en cualquier dispositivo."
-  },
-  {
-    icon: <Code className="h-12 w-12 text-primary" />,
-    title: "Software Personalizado",
-    description: "Diseñamos soluciones a medida que se adaptan a tus procesos y necesidades específicas, mejorando la productividad de tu empresa."
-  },
-  {
-    icon: <Cloud className="h-12 w-12 text-primary" />,
-    title: "Servicios en la Nube",
-    description: "Implementamos y gestionamos soluciones en la nube seguras y escalables para facilitar el acceso y la colaboración desde cualquier parte del mundo."
-  },
-  {
-    icon: <Server className="h-12 w-12 text-accent" />,
-    title: "Infraestructura IT",
-    description: "Optimizamos y gestionamos redes, servidores y sistemas críticos para garantizar la continuidad y el rendimiento de tu negocio."
-  },
-  {
-    icon: <ShieldCheck className="h-12 w-12 text-primary" />,
-    title: "Ciberseguridad",
-    description: "Protegemos tu información y sistemas con soluciones avanzadas de seguridad digital y monitoreo continuo contra amenazas."
-  },
-  {
-    icon: <Paintbrush className="h-12 w-12 text-primary" />,
-    title: "Diseño Gráfico",
-    description: "Creamos identidades visuales impactantes y materiales gráficos profesionales que comunican efectivamente el valor de tu marca."
-  },
-  
-  {
-    icon: <Wrench className="h-12 w-12 text-primary" />,
-    title: "CMMS Implementation & Migration",
-    description: "Instalamos, migramos y optimizamos sistemas CMMS para una gestión eficiente del mantenimiento y activos empresariales."
-  },
-  {
-    icon: <AlertTriangle className="h-12 w-12 text-accent" />,
-    title: "ECMS Installation & Warning Setup",
-    description: "Configuramos sistemas ECMS con alertas inteligentes para monitorear procesos críticos y garantizar operaciones eficientes."
-  },
-  {
-    icon: <Satellite className="h-12 w-12 text-primary" />,
-    title: "IoT Device Integration & Tracking",
-    description: "Conectamos e integramos dispositivos IoT para el monitoreo y control en tiempo real de tus procesos o activos."
-  },
-  {
-    icon: <Repeat className="h-12 w-12 text-accent" />,
-    title: "Automation & Process Optimization",
-    description: "Automatizamos tareas repetitivas y optimizamos flujos de trabajo para reducir errores, ahorrar tiempo y aumentar la eficiencia."
-  },
-  {
-    icon: <Users className="h-12 w-12 text-accent" />,
-    title: "Manejo de Redes Sociales",
-    description: "Gestionamos estratégicamente tus redes sociales para aumentar tu visibilidad, generar engagement y potenciar tu marca en línea."
-  },
-  {
-  icon: <Megaphone className="h-12 w-12 text-primary" />,
-  title: "Marketing Digital y Publicidad",
-  description: "Diseñamos campañas digitales efectivas para posicionar tu marca, atraer nuevos clientes y aumentar tus conversiones en línea."
-}
+const ease = [0.2, 0.8, 0.2, 1] as const;
 
+export default function Index() {
+  const { home } = siteContent;
+  const images = useMemo(() => home.heroImages?.filter(Boolean) ?? [], [home.heroImages]);
+  const [i, setI] = useState(0);
 
-  ];
-
-  const testimonials = [
-    {
-      name: "María González",
-      company: "Tech Innovators",
-      text: "JW Tech Solutions transformó completamente nuestro negocio con una plataforma increíble.",
-      rating: 5
-    },
-    {
-      name: "Carlos Rodríguez", 
-      company: "StartupXYZ",
-      text: "Nos apoyaron en cada paso del camino, desde la idea inicial hasta el lanzamiento final.",
-      rating: 5
-    },
-    {
-      name: "Ana Martínez",
-      company: "Retail Plus",
-      text: "Su expertise técnico y atención al detalle superaron nuestras expectativas.",
-      rating: 5
-    }
-  ];
-
-  const stats = [
-    { number: "10+", label: "Proyectos Completados" },
-    { number: "98%", label: "Satisfacción Cliente" },
-    { number: "24/7", label: "Soporte Técnico" },
-    { number: "10+", label: "Tecnicos Profesionales Disponibles" }
-  ];
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const t = setInterval(() => setI((x) => (x + 1) % images.length), 4500);
+    return () => clearInterval(t);
+  }, [images.length]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="relative py-32 bg-hero-gradient text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              Innovación Digital<br />
-              <span className="bg-white bg-clip-text text-transparent">
-                Para Tu Empresa
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
-            💡Llevamos tu visión al siguiente nivel con tecnología que transforma.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contacto">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 transition-colors text-lg px-8 py-3">
-                  Iniciar Proyecto
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/proyectos">
-                <Button size="lg" variant="hero" className="text-lg px-8 py-3">
-                  Ver Proyectos
-                </Button>
-              </Link>
+      {/* HERO (Poster Tech) */}
+      <section className="relative overflow-hidden">
+        {/* Base background (dark) */}
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--background))_0%,hsl(0_0%_3%)_55%,hsl(var(--background))_100%)]" />
+
+        {/* Red glows */}
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-[hsl(var(--primary))]/30 blur-3xl" />
+        <div className="absolute top-10 -right-40 h-[520px] w-[520px] rounded-full bg-[hsl(var(--primary))]/20 blur-3xl" />
+
+        {/* Grid / dots texture */}
+        <div className="absolute inset-0 opacity-[0.12] bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:26px_26px]" />
+
+        {/* Noise overlay (CSS only) */}
+        <div className="absolute inset-0 opacity-[0.06] mix-blend-overlay bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22120%22 height=%22120%22 filter=%22url(%23n)%22 opacity=%220.35%22/%3E%3C/svg%3E')]" />
+
+        {/* Top fade */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/50 to-transparent" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            {/* LEFT: Copy */}
+            <div className="max-w-xl">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75">
+                  <Code className="h-4 w-4 text-primary" />
+                  <span className="tracking-[0.22em] uppercase">{home.tagline}</span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.05}>
+                <h1 className="mt-5 text-4xl md:text-6xl lg:text-7xl font-black leading-[0.98] tracking-tight text-white">
+                  {home.title}
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <p className="mt-5 text-base md:text-lg text-white/75 leading-relaxed">
+                  {home.subtitle}
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.15}>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <Button
+                    asChild
+                    className="group bg-[hsl(var(--primary))] text-white hover:opacity-95 shadow-[0_14px_45px_hsl(var(--primary)/0.22)]"
+                  >
+                    <Link to={home.primaryCta.href}>
+                      {home.primaryCta.label}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+                  </Button>
+
+                  <Button
+  asChild
+  variant="outline"
+  className="border-white/25 text-white bg-white/5 hover:bg-white/10 hover:text-white"
+>
+  <a href={home.secondaryCta.href}>{home.secondaryCta.label}</a>
+</Button>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.2}>
+                <ul className="mt-8 grid gap-3">
+                  {home.bullets.map((b) => (
+                    <li key={b} className="flex items-center gap-3 text-white/80">
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 border border-white/10">
+                        <Check className="h-4 w-4 text-primary" />
+                      </span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Nuestros Servicios:
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Tecnología que transforma. Soluciones que impulsan. Resultados que escalan.🚀
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-card-gradient border-0 shadow-medium hover:shadow-strong transition-all duration-300 hover:-translate-y-2 group">
-                <CardContent className="p-8 text-center">
-                  <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+            {/* RIGHT: Poster visual */}
+            <div className="relative">
+              {/* glow frame */}
+              <div className="absolute -inset-6 rounded-[32px] bg-[hsl(var(--primary))]/18 blur-3xl" />
 
-      {/* Stats Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div key={index} className="group">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-                  {stat.number}
+              <motion.div
+                className="relative overflow-hidden rounded-[32px] border border-white/12 bg-white/5 shadow-[0_40px_120px_rgba(0,0,0,0.55)]"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, ease }}
+                whileHover={{ y: -8 }}
+              >
+                {/* top bar like a “poster” */}
+                <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+                  <p className="text-xs text-white/70 tracking-[0.18em] uppercase">JW Tech Solutions</p>
+                  <p className="text-xs text-white/60">jwtechssolutions.com</p>
                 </div>
-                <div className="text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-              Reseñas:
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              La satisfacción de nuestros clientes es nuestra mayor recompensa.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-card-gradient border-0 shadow-medium hover:shadow-strong transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-accent fill-current" />
+                <div className="relative aspect-[4/3] w-full">
+                  {/* tint overlay to keep all images aligned to brand */}
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--primary))/0.28,transparent_55%)]" />
+
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={images[i] ?? "fallback"}
+                      src={images[i] ?? "/home/hero-1.png"}
+                      alt="JW Tech Hero"
+                      className="h-full w-full object-cover"
+                      initial={{ opacity: 0, scale: 1.03 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.6, ease }}
+                    />
+                  </AnimatePresence>
+
+                  {/* subtle vignette */}
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(1200px_circle_at_50%_10%,transparent_0%,rgba(0,0,0,0.35)_65%,rgba(0,0,0,0.6)_100%)]" />
+                </div>
+
+                {/* dots */}
+                <div className="flex items-center justify-between px-5 py-4 border-t border-white/10">
+                  <div className="flex gap-2">
+                    {images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setI(idx)}
+                        className={`h-2.5 w-2.5 rounded-full transition ${
+                          idx === i ? "bg-[hsl(var(--primary))]" : "bg-white/20 hover:bg-white/30"
+                        }`}
+                        aria-label={`Slide ${idx + 1}`}
+                      />
                     ))}
                   </div>
-                  <p className="text-muted-foreground mb-6 italic">
-                    "{testimonial.text}"
-                  </p>
-                  <div>
-                    <p className="font-bold text-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-card-gradient p-12 rounded-2xl shadow-strong">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              ¿Listo Para Comenzar Tu Proyecto?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Contáctanos hoy y descubre cómo podemos transformar tu idea en una solución digital exitosa.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contacto">
-                <Button size="lg" className="bg-tech-gradient hover:opacity-90 transition-opacity text-lg px-8 py-3">
-                  Empezar Ahora
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/servicios">
-                <Button size="lg" variant="outline" className="text-lg px-8 py-3">
-                  Ver Servicios
-                </Button>
-              </Link>
+                  <span className="text-xs text-white/60">
+                    {images.length ? `${i + 1}/${images.length}` : "1/1"}
+                  </span>
+                </div>
+              </motion.div>
+
+             
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              ¿Por Qué Elegir JW Tech Solutions?
-            </h2>
+      {/* SERVICES TEASER (más premium) */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <Reveal>
+          <div className="flex items-end justify-between gap-6 flex-wrap">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-extrabold">Servicios</h2>
+              <p className="mt-2 text-muted-foreground">
+                Soluciones modernas con estética premium, animaciones y rendimiento real.
+              </p>
+            </div>
+
+            <Button asChild variant="outline" className="border-border">
+              <Link to="/servicios">Ver todos</Link>
+            </Button>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              "Equipo especializado y certificado",
-              "Metodologías ágiles y probadas",
-              "Soporte técnico 24/7",
-              "Tecnologías de vanguardia",
-              "Garantía en todos los proyectos",
-              "Precios competitivos y transparentes"
-            ].map((item, index) => (
-              <div key={index} className="flex items-center p-4 bg-card-gradient rounded-lg shadow-soft">
-                <CheckCircle className="h-6 w-6 text-accent mr-4 flex-shrink-0" />
-                <span className="text-foreground font-medium">{item}</span>
+        </Reveal>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {siteContent.services.map((s, idx) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: idx * 0.06, ease }}
+              whileHover={{ y: -10 }}
+              className="group rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl overflow-hidden shadow-[0_18px_60px_rgba(0,0,0,0.35)]"
+            >
+              <div className="relative h-44 overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.06]"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--primary))/0.25,transparent_60%)]" />
               </div>
-            ))}
-          </div>
+
+              <div className="p-5">
+                <p className="text-white font-semibold">{s.title}</p>
+                <p className="mt-1 text-sm text-white/70">{s.desc}</p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {s.tags.slice(0, 3).map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-white/75"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-5">
+                  <Button asChild className="w-full bg-[hsl(var(--primary))] text-white hover:opacity-95">
+                    <Link to="/contacto">
+                      Cotizar <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
     </div>
   );
-};
-
-export default Index;
+}

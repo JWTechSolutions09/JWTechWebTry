@@ -1,96 +1,134 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Code, Zap } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  const navItems = [
-    { name: "Inicio", path: "/" },
-    { name: "Nosotros", path: "/nosotros" },
-    { name: "Servicios", path: "/servicios" },
-    { name: "Proyectos", path: "/proyectos" },
-    { name: "Contacto", path: "/contacto" },
-  ];
+  const navItems = useMemo(
+    () => [
+      { name: "Inicio", path: "/" },
+      { name: "Nosotros", path: "/nosotros" },
+      { name: "Servicios", path: "/servicios" },
+      { name: "Contacto", path: "/contacto" },
+    ],
+    []
+  );
 
   const isActive = (path: string) => location.pathname === path;
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    // cierra menú al cambiar de ruta
+    setIsOpen(false);
+  }, [location.pathname]);
+
   return (
-  <nav className="bg-background/95 backdrop-blur-sm border-b sticky top-0 z-50 shadow-soft">
-  <div className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8">
-    <div className="flex justify-between items-center h-20"> {}
-      {/* Logo */}
-      <Link to="/" className="flex items-center space-x-2">
-        <img
-          src="/logo-jw.png"
-          alt="JW Tech Solutions Logo"
-          className="h-16" 
-        />
-      </Link>
+    <nav
+      className={[
+        "sticky top-0 z-50 w-full",
+        "border-b border-white/10",
+        "backdrop-blur-xl",
+        scrolled
+          ? "bg-black/70 shadow-[0_18px_50px_rgba(0,0,0,0.45)]"
+          : "bg-black/45",
+      ].join(" ")}
+    >
+      {/* red glow line */}
+      <div className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-[hsl(var(--primary))]/70 to-transparent" />
 
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="flex h-20 items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3">
+            <div className="relative">
+              <div className="absolute -inset-2 rounded-full bg-[hsl(var(--primary))]/20 blur-xl" />
+              <img src="/logo-jw.png" alt="JW Tech Solutions" className="relative h-12 w-auto" />
+            </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden sm:block leading-tight">
+              <p className="text-sm font-semibold tracking-wide text-white">JW TECH</p>
+              <p className="text-xs text-white/60">Solutions</p>
+            </div>
+          </Link>
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`relative px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${isActive(item.path)
-                  ? "text-primary bg-primary/10"
-                  : "text-foreground hover:text-primary hover:bg-primary/5"
-                  }`}
+                className={[
+                  "relative rounded-xl px-4 py-2 text-sm font-medium transition",
+                  "text-white/80 hover:text-white hover:bg-white/5",
+                  isActive(item.path) ? "text-white" : "",
+                ].join(" ")}
               >
                 {item.name}
                 {isActive(item.path) && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                  <span className="absolute left-4 right-4 -bottom-[2px] h-[2px] rounded-full bg-[hsl(var(--primary))]" />
                 )}
               </Link>
             ))}
-            <Link to="/contacto">
-            <Button className="bg-tech-gradient hover:opacity-90 transition-opacity shadow-medium">
-              Cotizar Proyecto
-            </Button>
+
+            <Link to="/contacto" className="ml-2">
+              <Button className="group bg-[hsl(var(--primary))] text-white hover:opacity-95 shadow-[0_10px_30px_hsl(var(--primary)/0.25)]">
+                Cotizar Proyecto
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Button>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile button */}
           <div className="md:hidden">
             <Button
               variant="ghost"
-              size="sm"
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground"
+              size="icon"
+              onClick={() => setIsOpen((v) => !v)}
+              className="text-white hover:bg-white/10"
+              aria-label="Open menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t bg-card">
-            <div className="flex flex-col space-y-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(item.path)
-                    ? "text-primary bg-primary/10"
-                    : "text-foreground hover:text-primary hover:bg-primary/5"
-                    }`}
-                >
-                  {item.name}
+          <div className="md:hidden pb-5">
+            <div className="rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl overflow-hidden">
+              <div className="p-3 flex flex-col gap-1">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={[
+                      "rounded-xl px-4 py-3 text-sm font-medium transition",
+                      isActive(item.path)
+                        ? "bg-white/10 text-white"
+                        : "text-white/80 hover:text-white hover:bg-white/5",
+                    ].join(" ")}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+
+                <Link to="/contacto" className="mt-2">
+                  <Button className="w-full group bg-[hsl(var(--primary))] text-white hover:opacity-95">
+                    Cotizar Proyecto
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Button>
                 </Link>
-              ))}
-              <Button
-                className="mt-4 bg-tech-gradient hover:opacity-90 transition-opacity"
-                onClick={() => setIsOpen(false)}
-              >
-                Cotizar Proyecto
-              </Button>
+              </div>
             </div>
           </div>
         )}
