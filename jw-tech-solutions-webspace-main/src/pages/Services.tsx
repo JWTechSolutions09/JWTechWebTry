@@ -66,7 +66,7 @@ export default function Services() {
 
         <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-20 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75">
-            <Sparkles className="h-4 w-4 text-primary" />
+            <Shield className="h-4 w-4 text-primary" />
             <span className="tracking-[0.22em] uppercase">{servicesPage.badge}</span>
           </div>
 
@@ -89,9 +89,13 @@ export default function Services() {
               </Link>
             </Button>
 
-            <Button asChild variant="outline" className="border-white/20 text-white hover:bg-white/10">
-              <Link to={servicesPage.secondaryCta.href}>{servicesPage.secondaryCta.label}</Link>
-            </Button>
+             <Button
+  asChild
+  variant="outline"
+  className="border-white/25 text-white bg-white/5 hover:bg-white/10 hover:text-white"
+>
+  <a href={servicesPage.secondaryCta.href}>{servicesPage.secondaryCta.label}</a>
+</Button>
           </div>
         </div>
       </section>
@@ -253,9 +257,13 @@ export default function Services() {
                 </Link>
               </Button>
 
-              <Button asChild size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                <Link to={servicesPage.ctaSecondary.href}>{servicesPage.ctaSecondary.label}</Link>
-              </Button>
+              <Button
+  asChild
+  variant="outline"
+  className="border-white/25 text-white bg-white/5 hover:bg-white/10 hover:text-white"
+>
+  <a href={servicesPage.secondaryCta.href}>{servicesPage.secondaryCta.label}</a>
+</Button>
             </div>
           </div>
         </div>

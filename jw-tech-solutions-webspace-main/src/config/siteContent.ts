@@ -46,11 +46,11 @@ export const siteContent = {
   ],
   servicesPage: {
     badge: "JW TECH SOLUTIONS",
-    title: "Servicios que se sienten modernos",
+    title: "💻Tecnología que impulsa tu negocio.",
     subtitle:
-      "Tecnología, estrategia y diseño unidos para acelerar tu crecimiento. Construimos experiencias premium: rápidas, seguras y listas para convertir.",
+      "Diseñamos y desarrollamos soluciones confiables que impulsan tu negocio.⌨️",
     primaryCta: { label: "Cotizar Proyecto", href: "/contacto" },
-    secondaryCta: { label: "Ver Proyectos", href: "/proyectos" },
+    secondaryCta: { label: "Ver Servicios", href: "/servicios" },
 
     filterTitle: "Explora por categoría",
     filterSubtitle: "Elige un enfoque o revisa todo el catálogo.",
@@ -62,7 +62,7 @@ export const siteContent = {
     ctaSubtitle:
       "Cuéntanos tu idea y te proponemos una solución moderna, escalable y con estética premium.",
     ctaPrimary: { label: "Iniciar Proyecto", href: "/contacto" },
-    ctaSecondary: { label: "Ver trabajos", href: "/proyectos" },
+    ctaSecondary: { label: "Ver trabajos", href: "/servicios" },
 
     // categorías visibles en el filtro
     categories: ["Todos", "Web", "Mobile", "Software", "Database", "Security", "Design"] as const,
@@ -91,7 +91,7 @@ export const siteContent = {
       description: "Sistemas a medida para automatizar y optimizar procesos empresariales.",
       features: ["ERP/CRM", "APIs REST", "Integraciones", "Arquitectura escalable"],
       price: "Cotización personalizada",
-      image: "/services/software.png",
+      image: "/services/software.jpg",
     },
     {
       category: "Database",
