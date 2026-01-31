@@ -12,18 +12,19 @@ export async function onRequestPost({ request, env }) {
 
     // ✅ KB “inline” (por ahora simple). Luego lo conectamos a tus md.
     const KB = [
-      {
-        source: "services.md",
-        text: `JW Tech Solutions ofrece: Website, Apps, AI, Cybersecurity e Integrations. Puedes pedir una cotización explicando tu idea, objetivo y plazo.`,
-      },
-      {
-        source: "contact.md",
-        text: `Para contactar: ve a la sección Contacto del sitio. Incluye tu nombre, empresa, servicio de interés y detalles del proyecto.`,
-      },
-      {
-        source: "faq.md",
-        text: `FAQ: tiempos y costos dependen del alcance. Se recomienda agendar una llamada para definir requerimientos y estimar.`,
-      },
+     {
+  source: "services.md",
+  text: `JW Tech Solutions ofrece soluciones completas en: Websites, Apps Móviles, Inteligencia Artificial, Ciberseguridad, Base de Datos, Integracion de ChatBots, Ecommerce e Integraciones. Puedes solicitar una cotización explicando tu idea, el objetivo del proyecto, funcionalidades deseadas, plataforma (web/móvil), y el plazo estimado. Si ya tienes referencias o un diseño, también puedes compartirlo para estimar con mayor precisión.`,
+},
+{
+  source: "contact.md",
+  text: `Para contactar: ve a la sección "Contacto" del sitio y completa el formulario. Incluye tu nombre, empresa (si aplica), el servicio de interés y una descripción clara de lo que necesitas. Agrega detalles como presupuesto estimado(Si tienes), fechas importantes, y cómo prefieres ser contactado (correo o WhatsApp) para una respuesta más rápida.`,
+},
+{
+  source: "faq.md",
+  text: `FAQ: los tiempos y costos dependen del alcance, la complejidad y las funciones requeridas. Para una estimación más exacta, se recomienda agendar una llamada o reunión corta donde se definan requerimientos, prioridades, entregables y el plan de trabajo. Luego de esto, se comparte una propuesta con estimación de tiempo y costo.`,
+},
+
     ];
 
     const scoreChunk = (query, chunk) => {
@@ -90,7 +91,7 @@ No inventes precios, políticas o promesas.
 
     return new Response(
       JSON.stringify({ reply, sources: uniqueSources, signature: "CLOUDFLARE_PAGES_FN_V1" }),
-      { status: 200, headers: { "Content-Type": "application/json" } }
+      { status: 200, headers: { "Conten.t-Type": "application/json" } }
     );
   } catch (err) {
     return new Response(
