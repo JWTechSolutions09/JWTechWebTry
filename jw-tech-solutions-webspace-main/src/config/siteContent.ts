@@ -149,27 +149,27 @@ export const siteContent = {
   clients: [
     {
       name: "ER TOWINGS",
-      logo: "/ERTOW.jpeg",
+      logo: "/ERTOW.png",
       url: "https://ertowing.pages.dev",
     },
     {
       name: "AK DEVELOPMENTS",
-      logo: "/Akdevelop.jpeg",
+      logo: "/Akdevelop.png",
       url: "https://ankdevelopments.pages.dev/",
     },
     {
       name: "International ASCC",
-      logo: "/International.jpeg",
+      logo: "/International.png",
       url: "https://internationalascc.com/",
     },
     {
       name: "Agregados Geraldo Diaz",
-      logo: "/AgregadosGeraldo.jpeg",
+      logo: "/AgregadosGeraldo.png",
       url: "https://www.agregadosgeraldodiaz.com/",
     },
     {
       name: "JW Tech Solutions",
-      logo: "/JWTECH.jpeg",
+      logo: "/JWTECH.png",
       url: "https://jwtechssolutions.com/",
     },
     {
