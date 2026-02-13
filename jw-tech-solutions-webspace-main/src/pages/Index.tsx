@@ -6,6 +6,7 @@ import { Code, Zap,ArrowRight, Check, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
+import ClientLogos from "@/components/ClientLogos";
 
 const ease = [0.2, 0.8, 0.2, 1] as const;
 
@@ -231,6 +232,9 @@ export default function Index() {
           ))}
         </div>
       </section>
+
+      {/* CLIENT LOGOS SECTION */}
+      <ClientLogos />
     </div>
   );
 }

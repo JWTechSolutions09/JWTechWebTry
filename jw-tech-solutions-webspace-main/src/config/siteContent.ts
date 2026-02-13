@@ -145,4 +145,37 @@ export const siteContent = {
         "Desplegamos, capacitamos y damos soporte para una adopción fluida y mejoras continuas.",
     },
   ],
+
+  clients: [
+    {
+      name: "ER TOWINGS",
+      logo: "/ERTOW.jpeg",
+      url: "https://ertowing.pages.dev",
+    },
+    {
+      name: "AK DEVELOPMENTS",
+      logo: "/Akdevelop.jpeg",
+      url: "https://ankdevelopments.pages.dev/",
+    },
+    {
+      name: "International ASCC",
+      logo: "/International.jpeg",
+      url: "https://internationalascc.com/",
+    },
+    {
+      name: "Agregados Geraldo Diaz",
+      logo: "/AgregadosGeraldo.jpeg",
+      url: "https://www.agregadosgeraldodiaz.com/",
+    },
+    {
+      name: "JW Tech Solutions",
+      logo: "/JWTECH.jpeg",
+      url: "https://jwtechssolutions.com/",
+    },
+    {
+      name: "Jamcob Electric",
+      logo: "/Jamcobe.png",
+      url: "https://www.jamcobelectric.com/",
+    },
+  ],
 };

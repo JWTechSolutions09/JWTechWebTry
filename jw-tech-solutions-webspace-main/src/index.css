@@ -48,7 +48,7 @@ All colors MUST be HSL.
 --shadow-soft: 0 4px 20px hsl(354 85% 52% / 0.12);
 --shadow-medium: 0 8px 30px hsl(354 85% 52% / 0.18);
 --shadow-strong: 0 12px 40px hsl(354 85% 52% / 0.22);
-
+  }
 
   .dark {
    --background: 0 0% 5%;
@@ -88,4 +88,21 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
-}}
+}
+
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 2rem));
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scroll-infinite 35s linear infinite;
+}
+
+.animate-scroll-infinite:hover {
+  animation-play-state: paused;
+}
